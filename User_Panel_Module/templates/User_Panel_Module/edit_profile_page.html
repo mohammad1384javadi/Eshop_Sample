@@ -1,0 +1,32 @@
+{% extends 'shared/_layout.html' %}
+{% load render_partial %}
+
+{% block title %}
+    ویرایش اطلاعات
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                {% if user.avatar %}
+                    <a class="thumbnail">
+                        <img style="width: 100%" src="{{ user.avatar.url }}" alt="{{ user }}">
+                    </a>
+                {% else %}
+                    <a class="thumbnail">
+                        <img style="width: 100%" src="/static/images/blog/blog-one.jpg" alt="">
+                    </a>
+                {% endif %}
+                {% render_partial 'User_Panel_Module.views.user_panel_component' %}
+            </div>
+            <div class="col-md-8">
+                <form action="{% url 'edit_profile_page' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ edit_form }}
+                    <button type="submit" class="btn btn-success">ثبت</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

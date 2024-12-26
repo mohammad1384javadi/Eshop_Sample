@@ -1,0 +1,55 @@
+{% extends 'shared/_layout.html' %}
+{% load thumbnail %}
+
+{% block title %}
+    درباره ما
+{% endblock %}
+
+{% block content %}
+    <div id="contact-page" class="container">
+    	<div class="bg">
+	    	    	
+    		<div class="row"> 
+				<div class="col-sm-4">
+	    			<div class="contact-info">
+	    				<h2 class="title text-center">لوگـو شرکت</h2>
+						{% if site_setting.site_logo %}
+                            <img src="{{ site_setting.site_logo.url }}" alt="{{ site_setting.site_name }}">
+                        {% else %}
+                            <img src="/static/images/home/About-Logo.jpg" class="img-responsive">
+						{% endif %}
+	    			</div>
+    			</div>
+	    		<div class="col-sm-8">
+	    			<div class="about">
+	    				<h2 class="title text-center">دربـاره ما</h2>
+                        <p class="about-desc">
+                            {{ site_setting.about_us_text }}
+                        </p>
+						</div>
+	    		</div>    			
+	    	</div>  
+			
+			<div class="row">
+				<div class="col-sm-12 about-address">
+					<address>
+	    				<p> {{ site_setting.site_name }}|
+                            {% if site_setting.addres %}
+                                آدرس: {{ site_setting.addres }}|
+                            {% endif %}
+                            {% if site_setting.phone %}
+                                تلفن تماس :{{ site_setting.phone }}|
+                            {% endif %}
+                             {% if site_setting.fax %}
+                                فکس : {{ site_setting.fax }}|
+                             {% endif %}
+                            {% if site_setting.email %}
+                                | ایمیـل : {{ site_setting.email }}
+                            {% endif %}
+						</p>
+	    			</address>
+				</div>
+			</div>
+    	</div>	
+    </div>
+{% endblock %}

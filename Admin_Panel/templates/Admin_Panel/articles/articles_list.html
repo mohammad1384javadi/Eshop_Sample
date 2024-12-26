@@ -1,0 +1,37 @@
+{% extends 'Admin_Panel/shared/_admin_layout.html' %}
+
+{% block title %}
+    لیست مقالات
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <tr>
+                        <th>عنوان</th>
+                        <th>وضعیت</th>
+                        <th>دستورات</th>
+                    </tr>
+                    {% for article in object_list %}
+                        <tr>
+                            <td>{{ article.title }}</td>
+                            <td>
+                                {% if article.is_active %}
+                                    <span class="text-success">فعال</span>
+                                {% else %}
+                                    <span class="text-danger">غیرفعال</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url '_admin_article_edit_page' pk=article.id %}" class="btn btn-blue">ویرایش</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

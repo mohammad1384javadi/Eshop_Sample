@@ -1,0 +1,21 @@
+{% extends 'shared/_layout.html' %}
+{% load render_partial %}
+
+{% block title %}
+    داشبورد
+{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    {% render_partial 'User_Panel_Module.views.user_panel_component' %}
+                </div>
+                <div class="col-md-8">
+                    <p>This Is User Dashboard</p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
